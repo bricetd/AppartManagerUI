@@ -1,0 +1,27 @@
+import { Component} from '@angular/core';
+import { Appartement } from './appartement.model';
+import {ActivatedRoute, Router} from '@angular/router'
+import {AppartementService} from './appartement.service'
+
+@Component({
+  templateUrl: "app/models/Appartement/appartement.list-back.html",
+})
+
+export class AppartementListBack{
+  private _appartements:Array<Appartement> = [];
+
+  constructor(private _appartementService:AppartementService,
+              private _router:Router,
+              private _route:ActivatedRoute){
+   var promise = this._appartementService.getAll();
+    promise.then(appartements => this._appartements = appartements)
+  }
+
+      private _removeAppartement(index:number){
+        this._appartementService.removeAppartement(index).then(appartement => console.log(appartement))
+      }
+
+      private _showAppartementDetails(appartement:Appartement){
+        this._router.navigate(['../'+appartement.getId()],{relativeTo:this._route})
+      }
+}

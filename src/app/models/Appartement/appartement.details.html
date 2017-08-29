@@ -1,0 +1,55 @@
+<!--div class="row" *ngIf="_appartement">
+  <h3>{{_appartement.nom}}</h3>
+  <p>{{_appartement.fichier}}</p>
+  <p>ID: <strong class="lead">{{_appartement.id}}</strong></p>
+</div-->
+
+<div class="row" *ngIf="_error">
+  <p class="alert alert_danger">{{_error}}</p>
+</div>
+
+<div class="row details" *ngIf="_appartement">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 details-label">Appartement</div>
+      <div class="col-md-2 details-data">{{_appartement.nom}}</div>
+      <small *ngIf="_appartement.etage">- Etage:{{_appartement.etage}}</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 details-label">Information</div>
+    <div class="col-md-2 details-data"
+    [ngClass]="{'text-success':_appartement.hasParking,'text-danger':!_appartement.hasParking}">{{_appartement.hasParking?"Avec Parking":"Sans Parking"}}</div>
+    <div class="col-md-2 details-data"
+    [ngClass]="{'text-success':_appartement.hasCave,'text-danger':!_appartement.hasCave}">{{_appartement.hasCave?"Avec Cave":"Sans Cave"}}</div>
+  </div>
+  <div class="row">
+    <div class="details-documents">
+      <div *ngIf="_documents.length == 0">
+        <p class="alert alert-info">There are no documents. Create new one!</p>
+      </div>
+      <div *ngIf="_documents.length > 0" class="table-responsive">
+        <table class="table table-hover">
+          <thead><tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Fichier</th>
+            <th>Ajout</th>
+            <th>Modification</th>
+            <th>Tags</th>
+          </tr></thead>
+          <tbody>
+            <tr *ngFor="let doc of _documents; let i = index">
+              <td>{{doc.id}}</td>
+              <td>{{doc.nom}}</td>
+              <td>{{doc.fichier}}</td>
+              <td>{{doc.date_ajout| date:'d MMM HH:mm'}}</td>
+              <td>{{doc.date_modification| date:'d MMM HH:mm'}}</td>
+              <td><span *ngFor="let tag of doc.tags; let i = index" class="label label-primary">{{tag}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

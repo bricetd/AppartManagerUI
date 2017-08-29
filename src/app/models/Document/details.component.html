@@ -1,0 +1,9 @@
+<div class="row" *ngIf="_document">
+  <h3>{{_document.nom}}</h3>
+  <p>{{_document.fichier}}</p>
+  <p>ID: <strong class="lead">{{_document.id}}</strong></p>
+</div>
+
+<div class="row" *ngIf="_error">
+  <p class="alert alert_danger">{{_error}}</p>
+</div>

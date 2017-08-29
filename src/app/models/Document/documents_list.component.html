@@ -1,0 +1,16 @@
+<div class="row" *ngIf="_documents.length == 0">
+  <div class="alert alert-info">You don't have any document yet</div>
+</div>
+
+<div class="row">
+  <div class="doc col-md-12" *ngFor="let document of _documents; let i = index" (click)="_showDetails(document)">
+
+  <h2 class="title">{{document.nom}} {{document.id}}</h2>
+  <p>Fichier: <strong class="lead">{{document.fichier}}</strong></p>
+  <div class="row">
+    <div class="col-md-3">
+      <button class="btn btn-danger" (click)="_removeDocument(i)">Supprimer</button>
+  </div>
+  </div>
+</div>
+</div>

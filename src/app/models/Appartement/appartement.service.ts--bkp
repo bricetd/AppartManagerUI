@@ -1,0 +1,58 @@
+import { Injectable, Optional } from '@angular/core';
+import {Appartement} from './appartement.model';
+import {LoggerService} from '../../utils/logger.service'
+
+@Injectable()
+export class AppartementService{
+
+  constructor(@Optional() private _logger:LoggerService){}
+
+  private _appartements:Array<Appartement> = [
+    new Appartement(1, "Cergy", 10, 1, true, false),
+    new Appartement(2, "Grigny", 120, 1, false, false),
+    new Appartement(3, "Montigny", 100, 0, true, true),
+  ]
+
+  private _nextID:number = 0
+  private _maxAppartements:number = 10
+
+  public getAll():Promise<Array<Appartement>>{
+    return Promise.resolve(this._appartements);
+  }
+
+  public getById(appartementId: number):Promise<Appartement>{
+    return new Promise((resolve, reject) => {
+      var foundAppartement = this._appartements.find(appartement => appartement.getId() == appartementId);
+      if(!foundAppartement){
+        reject("No appartement found with this ID.")
+      }else{
+        resolve(foundAppartement)
+      }
+    })
+  }
+
+  public createAppartement(newAppartement:Appartement){
+      return new Promise((resolve, reject) => {
+        if(this._appartements.length >= this._maxAppartements){
+          reject("Maximum number of appartements reached")
+          return
+        }
+        if(this._logger){
+          this._logger.log("Appartement create: "+newAppartement.getNom())
+        }
+        this._appartements.push(newAppartement)
+        resolve(newAppartement)
+      });
+  }
+
+  public removeAppartement(index:number){
+    var appartement:Appartement = this._appartements[index]
+    if(this._logger){
+      this._logger.log("Appartement remove id: "+index)
+    }
+    this._appartements.splice(index,1);
+    return Promise.resolve(appartement)
+  }
+}
+
+export let APPARTMENT_SERVICES_PROVIDERS:Array<any> =  [AppartementService, LoggerService]
