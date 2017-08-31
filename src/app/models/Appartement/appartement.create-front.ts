@@ -22,7 +22,7 @@ export class AppartementCreateFront implements AfterViewInit{
 
   private createAppartement(nomEl:any, surfaceEl:any, etageEl:any,
                             hasParkingEl:any, hasCaveEl:any){
-    var newAppartement:Appartement = new Appartement(1, nomEl.value, +surfaceEl.value, +etageEl.value, hasParkingEl.value, hasCaveEl.value)
+    var newAppartement:Appartement = new Appartement(1, nomEl.value, +surfaceEl.value, +etageEl.value, hasParkingEl.checked, hasCaveEl.checked)
     this.created.emit(newAppartement);
   }
 

@@ -17,17 +17,19 @@ var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/observable/throw");
+require("rxjs/add/operator/toPromise");
+var appartement_model_1 = require("./appartement.model");
 var logger_service_1 = require("../../utils/logger.service");
 var AppartementService = (function () {
     function AppartementService(http, _logger) {
         this.http = http;
         this._logger = _logger;
         this.baseUrl = "http://localhost:8082/appartmanager/appartement";
-        //private _appartements:Array<Appartement> = [
-        //  new Appartement(1, "Cergy", 10, 1, true, false),
-        //  new Appartement(2, "Grigny", 120, 1, false, false),
-        //  new Appartement(3, "Montigny", 100, 0, true, true),
-        //]
+        this._appartements = [
+            new appartement_model_1.Appartement(1, "Cergy", 10, 1, true, false),
+            new appartement_model_1.Appartement(2, "Grigny", 120, 1, false, false),
+            new appartement_model_1.Appartement(3, "Montigny", 100, 0, true, true),
+        ];
         this._nextID = 0;
         this._maxAppartements = 10;
     }
@@ -42,11 +44,6 @@ var AppartementService = (function () {
         //.map(this.mapAppartements);
         return _appartements;
     };
-    AppartementService.prototype._getHeaders = function () {
-        var headers = new Headers();
-        headers.append('Accept', 'application/json');
-        return headers;
-    };
     AppartementService.prototype.getById = function (appartementId) {
         var _appartements = this.http
             .get(this.baseUrl + "/" + appartementId, { headers: this._getHeaders() })
@@ -59,18 +56,13 @@ var AppartementService = (function () {
         return _appartements;
     };
     AppartementService.prototype.createAppartement = function (newAppartement) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            if (_this._appartements.length >= _this._maxAppartements) {
-                reject("Maximum number of appartements reached");
-                return;
-            }
-            if (_this._logger) {
-                _this._logger.log("Appartement create: " + newAppartement.getNom());
-            }
-            _this._appartements.push(newAppartement);
-            resolve(newAppartement);
-        });
+        this._logger.log("ICI");
+        var body = JSON.stringify(newAppartement);
+        return this.http
+            .post("" + this.baseUrl, body, { headers: this._getHeaders() })
+            .toPromise()
+            .then(this._extractData)
+            .catch(this._handleError);
     };
     AppartementService.prototype.removeAppartement = function (index) {
         var appartement = this._appartements[index];
@@ -79,6 +71,21 @@ var AppartementService = (function () {
         }
         this._appartements.splice(index, 1);
         return Promise.resolve(appartement);
+    };
+    AppartementService.prototype._getHeaders = function () {
+        var headers = new http_1.Headers();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+        return headers;
+    };
+    AppartementService.prototype._extractData = function (res) {
+        var body = res.json();
+        console.log("Appartement create: " + res.json());
+        return body || {};
+    };
+    AppartementService.prototype._handleError = function (error) {
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
     };
     return AppartementService;
 }());

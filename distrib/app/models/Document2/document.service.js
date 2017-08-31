@@ -38,7 +38,7 @@ var DocumentService = (function () {
     DocumentService.prototype.getById = function (docId) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            var foundDoc = _this._docs.find(function (doc) { return doc.getId() == docId; });
+            var foundDoc = _this._docs.find(function (doc) { return doc.id == docId; });
             if (!foundDoc) {
                 reject("No document found with this ID.");
             }
@@ -55,7 +55,7 @@ var DocumentService = (function () {
                 return;
             }
             if (_this._logger) {
-                _this._logger.log("Document create: " + newDoc.getNom());
+                _this._logger.log("Document create: " + newDoc.nom);
             }
             _this._docs.push(newDoc);
             resolve(newDoc);
@@ -81,7 +81,7 @@ var DocumentService = (function () {
         return _documents;
     };
     DocumentService.prototype._getHeaders = function () {
-        var headers = new Headers();
+        var headers = new http_1.Headers();
         headers.append('Accept', 'application/json');
         return headers;
     };

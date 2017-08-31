@@ -1,5 +1,5 @@
 import { Injectable, Optional } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Observable} from 'rxjs/Observable'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch';
@@ -33,7 +33,7 @@ private baseUrl:string="http://localhost:8082/appartmanager/appartement"
 
   public getById(docId: number):Promise<Document>{
     return new Promise((resolve, reject) => {
-      var foundDoc = this._docs.find(doc => doc.getId() == docId);
+      var foundDoc = this._docs.find(doc => doc.id == docId);
       if(!foundDoc){
         reject("No document found with this ID.")
       }else{
@@ -49,7 +49,7 @@ private baseUrl:string="http://localhost:8082/appartmanager/appartement"
           return
         }
         if(this._logger){
-          this._logger.log("Document create: "+newDoc.getNom())
+          this._logger.log("Document create: "+newDoc.nom)
         }
         this._docs.push(newDoc)
         resolve(newDoc)
