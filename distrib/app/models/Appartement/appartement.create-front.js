@@ -22,6 +22,10 @@ var AppartementCreateFront = (function () {
     AppartementCreateFront.prototype.resetCreateForm = function () {
         this.createForm.nativeElement.reset();
     };
+    AppartementCreateFront.prototype.closeCreateForm = function () {
+        this.resetCreateForm();
+        this.modalwindows.hide();
+    };
     AppartementCreateFront.prototype.ngAfterViewInit = function () {
         this.modalwindows.show();
     };
@@ -41,7 +45,7 @@ __decorate([
 ], AppartementCreateFront.prototype, "created", void 0);
 __decorate([
     core_1.ViewChild(modalWindows_1.ModalWindows),
-    __metadata("design:type", modalWindows_1.ModalWindows)
+    __metadata("design:type", typeof (_a = typeof modalWindows_1.ModalWindows !== "undefined" && modalWindows_1.ModalWindows) === "function" && _a || Object)
 ], AppartementCreateFront.prototype, "modalwindows", void 0);
 AppartementCreateFront = __decorate([
     core_1.Component({
@@ -51,4 +55,5 @@ AppartementCreateFront = __decorate([
     })
 ], AppartementCreateFront);
 exports.AppartementCreateFront = AppartementCreateFront;
+var _a;
 //# sourceMappingURL=appartement.create-front.js.map

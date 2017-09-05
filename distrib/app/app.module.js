@@ -9,10 +9,12 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_routing_1 = require("./app.routing");
 var home_component_1 = require("./home/home.component");
+//import {ModalWindows} from './utils/modalWindows'
 //import {DocumentComponent} from './models/Document/document.component'
 var app_component_1 = require("./app.component");
-//import {DocumentModule} from './models/Document/document.module'
-var appartement_module_1 = require("./models/Appartement/appartement.module");
+var document_module_1 = require("./models/Document2/document.module");
+var appartement_module_1 = require("./models/Appartement2/appartement.module");
+var modalwindows_module_1 = require("./utils/modalwindows/modalwindows.module");
 //import { Document } from './models/Document/document.model';
 //import {DocumentsList} from './models/Document/documents_list.component';
 //import {DocumentForm} from './models/Document/document_form.component'
@@ -25,14 +27,16 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule,
-            //                DocumentModule,
+            document_module_1.DocumentModule,
             appartement_module_1.AppartementModule,
+            modalwindows_module_1.ModalWindowsModule,
             app_routing_1.AppRoutingModule
         ],
         declarations: [
             app_component_1.AppComponent,
             home_component_1.HomeComponent,
         ],
+        exports: [],
         //providers: [DocumentService],
         //providers: [
         //                DOCUMENT_SERVICES_PROVIDERS // DOCUMENT_SERVICES_PROVIDERS is defined in document.services.ts

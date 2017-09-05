@@ -48,13 +48,10 @@ private baseUrl:string="http://localhost:8082/appartmanager/appartement"
       console.log(error);
       return Observable.throw(error);
     });
-    //.map(this.mapAppartements);
     return _appartements;
   }
 
   public createAppartement(newAppartement:Appartement){
-      this._logger.log("ICI")
-
       let body = JSON.stringify(newAppartement);
       return this.http
         .post(`${this.baseUrl}`, body, {headers: this._getHeaders()})
@@ -64,12 +61,12 @@ private baseUrl:string="http://localhost:8082/appartmanager/appartement"
   }
 
   public removeAppartement(index:number){
-    var appartement:Appartement = this._appartements[index]
-    if(this._logger){
-      this._logger.log("Appartement remove id: "+index)
-    }
-    this._appartements.splice(index,1);
-    return Promise.resolve(appartement)
+    let delHeaders = new Headers();
+    return this.http
+      .delete(`${this.baseUrl}/${index}`)
+      .toPromise()
+      .then(this._extractData)
+      .catch(this._handleError);
   }
 
   private _getHeaders(){

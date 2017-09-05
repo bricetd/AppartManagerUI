@@ -8,15 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var common_1 = require("@angular/common");
+var http_1 = require("@angular/http");
 var document_component_1 = require("./document.component");
-var list_component_1 = require("./list.component");
-var create_component_1 = require("./create.component");
-var details_component_1 = require("./details.component");
-var document_routes_1 = require("./document.routes");
-//import { Document } from './document.model';
-var documents_list_component_1 = require("./documents_list.component");
-var document_form_component_1 = require("./document_form.component");
-var document_services_1 = require("./document.services");
+var document_list_1 = require("./document.list");
+var document_create_1 = require("./document.create");
+var modalwindows_module_1 = require("../../utils/modalwindows/modalwindows.module");
+//import {DocumentDetails} from './document.details'
+var document_routing_1 = require("./document.routing");
+var document_service_1 = require("./document.service");
 var DocumentModule = (function () {
     function DocumentModule() {
     }
@@ -25,20 +24,22 @@ var DocumentModule = (function () {
 DocumentModule = __decorate([
     core_1.NgModule({
         imports: [
-            document_routes_1.DocumentRoutingModule,
+            document_routing_1.DocumentRoutingModule,
             common_1.CommonModule,
-            platform_browser_1.BrowserModule
+            http_1.HttpModule,
+            modalwindows_module_1.ModalWindowsModule,
+            platform_browser_1.BrowserModule,
         ],
         declarations: [
-            list_component_1.ListComponent,
-            create_component_1.CreateComponent,
             document_component_1.DocumentComponent,
-            details_component_1.DetailsComponent,
-            documents_list_component_1.DocumentsList,
-            document_form_component_1.DocumentForm,
+            document_list_1.DocumentList,
+            document_create_1.DocumentCreateForm,
+        ],
+        exports: [
+            document_component_1.DocumentComponent,
         ],
         providers: [
-            document_services_1.DOCUMENT_SERVICES_PROVIDERS // DOCUMENT_SERVICES_PROVIDERS is defined in document.services.ts
+            document_service_1.DOCUMENT_SERVICES_PROVIDERS
         ],
     })
 ], DocumentModule);

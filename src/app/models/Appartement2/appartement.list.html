@@ -1,0 +1,27 @@
+<div class="row" *ngIf="_appartements.length == 0">
+  <div class="alert alert-info">You don't have any appartement yet</div>
+</div>
+
+<div class="row">
+  <!--div class="appart col-md-12" *ngFor="let appartement of _appartements; let i = index" (click)="_showDetails(appartement)"-->
+    <div class="appart col-md-12" *ngFor="let appartement of _appartements; let i = index">
+
+  <h2 class="title">{{appartement.nom}}</h2>
+  <p>
+    Surface: <strong class="lead">{{appartement.surface}}m²</strong>
+  </p>
+  <p>
+    Etage: <strong class="lead"> {{ appartement.etage == 0 ? 'RDC' : appartement.etage }}</strong>
+  </p>
+  <p>
+    <strong class="lead">{{ appartement.hasCave ? 'Avec Cave' : 'Sans Cave' }}</strong>
+    <strong class="lead"> - {{ appartement.hasParking ? 'Avec Parking' : 'Sans Parking' }}</strong>
+  </p>
+  <div class="row">
+    <div class="col-md-3">
+      <button class="btn btn-danger" (click)="_removeAppartement(appartement.id)">Supprimer</button>
+      <button class="btn btn-info" (click)="_showDetails(appartement)">Details</button>
+    </div>
+  </div>
+</div>
+</div>

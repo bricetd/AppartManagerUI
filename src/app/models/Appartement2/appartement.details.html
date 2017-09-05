@@ -1,0 +1,31 @@
+<!--div class="row" *ngIf="_appartement">
+  <h3>{{_appartement.nom}}</h3>
+  <p>{{_appartement.fichier}}</p>
+  <p>ID: <strong class="lead">{{_appartement.id}}</strong></p>
+</div-->
+
+<div class="row" *ngIf="_error">
+  <p class="alert alert_danger">{{_error}}</p>
+</div>
+
+<div class="row details" *ngIf="_appartement">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 details-label">Appartement</div>
+      <div class="col-md-2 details-data">{{_appartement.nom}}</div>
+      <small *ngIf="_appartement.etage">- Etage:{{_appartement.etage}}</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 details-label">Information</div>
+    <div class="col-md-2 details-data"
+    [ngClass]="{'text-success':_appartement.hasParking,'text-danger':!_appartement.hasParking}">{{_appartement.hasParking?"Avec Parking":"Sans Parking"}}</div>
+    <div class="col-md-2 details-data"
+    [ngClass]="{'text-success':_appartement.hasCave,'text-danger':!_appartement.hasCave}">{{_appartement.hasCave?"Avec Cave":"Sans Cave"}}</div>
+  </div>
+  <div class="row">
+    <div class="details-documents">
+      <document-component [appartementId]="_appartement.id" [actionCode]="_documentActionCode">Loading list of documents ...</document-component>
+    </div>
+  </div>
+</div>

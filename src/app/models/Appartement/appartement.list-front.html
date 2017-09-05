@@ -3,7 +3,8 @@
 </div>
 
 <div class="row">
-  <div class="appart col-md-12" *ngFor="let appartement of _appartements; let i = index" (click)="_showDetails(appartement)">
+  <!--div class="appart col-md-12" *ngFor="let appartement of _appartements; let i = index" (click)="_showDetails(appartement)"-->
+    <div class="appart col-md-12" *ngFor="let appartement of _appartements; let i = index">
 
   <h2 class="title">{{appartement.nom}}</h2>
   <p>
@@ -18,7 +19,7 @@
   </p>
   <div class="row">
     <div class="col-md-3">
-      <button class="btn btn-danger" (click)="_removeAppartement(i)">Supprimer</button>
+      <button class="btn btn-danger" (click)="_removeAppartement(appartement.id)">Supprimer</button>
   </div>
   </div>
 </div>

@@ -52,11 +52,9 @@ var AppartementService = (function () {
             console.log(error);
             return Observable_1.Observable.throw(error);
         });
-        //.map(this.mapAppartements);
         return _appartements;
     };
     AppartementService.prototype.createAppartement = function (newAppartement) {
-        this._logger.log("ICI");
         var body = JSON.stringify(newAppartement);
         return this.http
             .post("" + this.baseUrl, body, { headers: this._getHeaders() })
@@ -65,12 +63,12 @@ var AppartementService = (function () {
             .catch(this._handleError);
     };
     AppartementService.prototype.removeAppartement = function (index) {
-        var appartement = this._appartements[index];
-        if (this._logger) {
-            this._logger.log("Appartement remove id: " + index);
-        }
-        this._appartements.splice(index, 1);
-        return Promise.resolve(appartement);
+        var delHeaders = new http_1.Headers();
+        return this.http
+            .delete(this.baseUrl + "/" + index)
+            .toPromise()
+            .then(this._extractData)
+            .catch(this._handleError);
     };
     AppartementService.prototype._getHeaders = function () {
         var headers = new http_1.Headers();

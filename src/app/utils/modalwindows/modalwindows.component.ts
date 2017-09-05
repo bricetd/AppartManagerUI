@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: "modalWindows",
-  templateUrl: "app/utils/modalWindows.html",
+  templateUrl: "app/utils/modalwindows/modalwindows.component.html",
   //styleUrls: ["app/models/Appartement/appartement.list-front.css"]
 })
 

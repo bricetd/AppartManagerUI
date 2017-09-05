@@ -19,9 +19,9 @@ export class DocumentService{
 private baseUrl:string="http://localhost:8082/appartmanager/appartement"
 
   private _docs:Array<Document> = [
-    new Document(1,"Contrat", "/home/local/contrat.doc",new Date(),new Date(),["contrat","salarie"]),
-    new Document(2,"Contrat2", "/home/local/contrat2.doc",new Date(),new Date(),["contrat","etudiant"]),
-    new Document(3,"Contrat3", "/home/local/contrat3.doc",new Date(),new Date(), ["contrat","collocation"])
+  //  new Document(1,"Contrat", "/home/local/contrat.doc",new Date(),new Date(),["contrat","salarie"]),
+  //  new Document(2,"Contrat2", "/home/local/contrat2.doc",new Date(),new Date(),["contrat","etudiant"]),
+  //  new Document(3,"Contrat3", "/home/local/contrat3.doc",new Date(),new Date(), ["contrat","collocation"])
   ]
 
   private _nextID:number = 0
@@ -65,6 +65,16 @@ private baseUrl:string="http://localhost:8082/appartmanager/appartement"
     return Promise.resolve(document)
   }
 
+  public addDocumentByAppartementId(newDocument:Document, appartementId:number){
+    let body = JSON.stringify(newDocument);
+    console.log("body: "+body)
+    return this.http
+      .post(`${this.baseUrl}/${appartementId}/document`, body, {headers: this._getHeaders()})
+      .toPromise()
+      .then(this._extractData)
+      .catch(this._handleError);
+  }
+
   public getByAppartementId(appartementId:number):Observable<Document[]>{
     let _documents = this.http
     .get(`${this.baseUrl}/${appartementId}/documents`, {headers: this._getHeaders()})
@@ -80,7 +90,19 @@ private baseUrl:string="http://localhost:8082/appartmanager/appartement"
   private _getHeaders(){
     let headers = new Headers();
     headers.append('Accept', 'application/json');
+    headers.append('Content-Type','application/json');
     return headers;
+  }
+
+  private _extractData(res:Response){
+    let body = res.json();
+    console.log("Appartement create: "+res.json())
+    return body || {};
+  }
+
+  private _handleError(error: any){
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
   }
 
 }

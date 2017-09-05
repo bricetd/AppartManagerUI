@@ -1,0 +1,11 @@
+<h2>Liste de vos appartements</h2>
+<p>
+  <a (click)="_doRefresh()">Liste d'appartements</a> |
+  <a (click)="_showCreateForm()">Ajouter un appartement</a>
+</p>
+<appartement-form (created)="_createAppartement($event)" [creationError]="_creationError"></appartement-form>
+<appartements-list [appartements]="_appartements" (delete)="_removeAppartement($event)" (details)="_showAppartementDetails($event)"></appartements-list>
+<p>
+  <a (click)="_doRefresh()">Liste d'appartements</a> |
+  <a (click)="_showCreateForm()">Ajouter un appartement</a>
+</p>

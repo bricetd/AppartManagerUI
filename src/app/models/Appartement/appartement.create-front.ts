@@ -30,6 +30,11 @@ export class AppartementCreateFront implements AfterViewInit{
     this.createForm.nativeElement.reset();
   }
 
+  public closeCreateForm(){
+    this.resetCreateForm();
+    this.modalwindows.hide();
+  }
+
   public ngAfterViewInit(){
     this.modalwindows.show()
   }

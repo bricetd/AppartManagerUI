@@ -1,0 +1,10 @@
+<p>
+  <a (click)="_doRefresh()">Liste de documents</a> |
+  <a (click)="_showCreateForm()">Ajouter un document</a>
+</p>
+<document-form (created)="_createDocument($event)" [creationError]="_creationError"></document-form>
+<document-list [documents]="_documents" (delete)="_removedocument($event)" (details)="_showdocumentDetails($event)"></document-list>
+<p>
+  <a (click)="_doRefresh()">Liste de documents</a> |
+  <a (click)="_showCreateForm()">Ajouter un document</a>
+</p>

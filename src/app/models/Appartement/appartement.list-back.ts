@@ -19,6 +19,9 @@ export class AppartementListBack{
 
       private _removeAppartement(index:number){
         this._appartementService.removeAppartement(index).then(appartement => console.log(appartement))
+        this._appartementService.getAll()
+        .subscribe(appartements => this._appartements = appartements)
+      //  this._router.navigate(['../list'],{relativeTo:this._route})
       }
 
       private _showAppartementDetails(appartement:Appartement){

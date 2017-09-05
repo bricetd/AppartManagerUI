@@ -17,18 +17,13 @@ var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/observable/throw");
-var document_model_1 = require("./document.model");
 var logger_service_1 = require("../../utils/logger.service");
 var DocumentService = (function () {
     function DocumentService(http, _logger) {
         this.http = http;
         this._logger = _logger;
         this.baseUrl = "http://localhost:8082/appartmanager/appartement";
-        this._docs = [
-            new document_model_1.Document(1, "Contrat", "/home/local/contrat.doc", new Date(), new Date(), ["contrat", "salarie"]),
-            new document_model_1.Document(2, "Contrat2", "/home/local/contrat2.doc", new Date(), new Date(), ["contrat", "etudiant"]),
-            new document_model_1.Document(3, "Contrat3", "/home/local/contrat3.doc", new Date(), new Date(), ["contrat", "collocation"])
-        ];
+        this._docs = [];
         this._nextID = 0;
         this._maxDocs = 10;
     }
@@ -69,6 +64,15 @@ var DocumentService = (function () {
         this._docs.splice(index, 1);
         return Promise.resolve(document);
     };
+    DocumentService.prototype.addDocumentByAppartementId = function (newDocument, appartementId) {
+        var body = JSON.stringify(newDocument);
+        console.log("body: " + body);
+        return this.http
+            .post(this.baseUrl + "/" + appartementId + "/document", body, { headers: this._getHeaders() })
+            .toPromise()
+            .then(this._extractData)
+            .catch(this._handleError);
+    };
     DocumentService.prototype.getByAppartementId = function (appartementId) {
         var _documents = this.http
             .get(this.baseUrl + "/" + appartementId + "/documents", { headers: this._getHeaders() })
@@ -83,7 +87,17 @@ var DocumentService = (function () {
     DocumentService.prototype._getHeaders = function () {
         var headers = new http_1.Headers();
         headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
         return headers;
+    };
+    DocumentService.prototype._extractData = function (res) {
+        var body = res.json();
+        console.log("Appartement create: " + res.json());
+        return body || {};
+    };
+    DocumentService.prototype._handleError = function (error) {
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
     };
     return DocumentService;
 }());

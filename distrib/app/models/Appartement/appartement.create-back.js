@@ -9,11 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var appartement_service_1 = require("./appartement.service");
 var appartement_create_front_1 = require("./appartement.create-front");
 var AppartementCreateBack = (function () {
-    function AppartementCreateBack(_appartementService) {
+    function AppartementCreateBack(_appartementService, _router, _route) {
         this._appartementService = _appartementService;
+        this._router = _router;
+        this._route = _route;
         this._creationError = "";
         this._maxDocs = 3;
     }
@@ -22,7 +25,8 @@ var AppartementCreateBack = (function () {
         this._appartementService.createAppartement(newAppartement).then(function (appartement) {
             console.log(appartement);
             _this._creationError = "";
-            _this._appartCreateFront.resetCreateForm();
+            _this._appartCreateFront.closeCreateForm();
+            _this._router.navigate(['../list'], { relativeTo: _this._route });
         })
             .catch(function (error) {
             _this._creationError = error;
@@ -38,7 +42,9 @@ AppartementCreateBack = __decorate([
     core_1.Component({
         templateUrl: "app/models/Appartement/appartement.create-back.html",
     }),
-    __metadata("design:paramtypes", [appartement_service_1.AppartementService])
+    __metadata("design:paramtypes", [appartement_service_1.AppartementService,
+        router_1.Router,
+        router_1.ActivatedRoute])
 ], AppartementCreateBack);
 exports.AppartementCreateBack = AppartementCreateBack;
 //# sourceMappingURL=appartement.create-back.js.map

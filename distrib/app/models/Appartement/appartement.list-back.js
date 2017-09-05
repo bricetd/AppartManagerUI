@@ -22,7 +22,11 @@ var AppartementListBack = (function () {
             .subscribe(function (appartements) { return _this._appartements = appartements; });
     }
     AppartementListBack.prototype._removeAppartement = function (index) {
+        var _this = this;
         this._appartementService.removeAppartement(index).then(function (appartement) { return console.log(appartement); });
+        this._appartementService.getAll()
+            .subscribe(function (appartements) { return _this._appartements = appartements; });
+        //  this._router.navigate(['../list'],{relativeTo:this._route})
     };
     AppartementListBack.prototype._showAppartementDetails = function (appartement) {
         this._router.navigate(['../' + appartement.id], { relativeTo: this._route });
