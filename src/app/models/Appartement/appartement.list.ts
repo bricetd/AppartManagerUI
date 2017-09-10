@@ -3,8 +3,8 @@ import { Appartement } from './appartement.model'
 
 @Component({
   selector: "appartements-list",
-  templateUrl: "app/models/Appartement2/appartement.list.html",
-  styleUrls: ["app/models/Appartement2/appartement.list.css"]
+  templateUrl: "app/models/Appartement/appartement.list.html",
+  styleUrls: ["app/models/Appartement/appartement.list.css"]
 })
 
 export class AppartementList{

@@ -3,8 +3,8 @@ import { Document } from './document.model'
 
 @Component({
   selector: "document-list",
-  templateUrl: "app/models/Document2/document.list.html",
-//  styleUrls: ["app/models/Document2/document.list.css"]
+  templateUrl: "app/models/Document/document.list.html",
+//  styleUrls: ["app/models/Document/document.list.css"]
 })
 
 export class DocumentList{

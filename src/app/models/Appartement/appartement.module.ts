@@ -5,38 +5,36 @@ import { HttpModule } from '@angular/http';
 
 
 import {AppartementComponent} from './appartement.component'
-import {AppartementListBack} from './appartement.list-back'
-import {AppartementListFront} from './appartement.list-front'
-import {AppartementCreateBack} from './appartement.create-back'
-import {AppartementCreateFront} from './appartement.create-front'
+import {AppartementList} from './appartement.list'
+import {AppartementCreateForm} from './appartement.create'
 import {AppartementDetails} from './appartement.details'
 
-import {ModalWindows} from '../../utils/modalWindows'
+import {ModalWindowsModule} from '../../utils/modalwindows/modalwindows.module'
 
 import { AppartementRoutingModule } from './appartement.routing';
 
 import {APPARTMENT_SERVICES_PROVIDERS} from './appartement.service'
-import {DOCUMENT_SERVICES_PROVIDERS} from '../Document2/document.service'
+import {DocumentModule} from '../Document/document.module'
 
 @NgModule({
   imports:      [
             AppartementRoutingModule,
             CommonModule,
             HttpModule,
+            DocumentModule,
+            ModalWindowsModule,
             BrowserModule
   ],
   declarations: [
           AppartementComponent,
-          AppartementListBack,
-          AppartementListFront,
-          AppartementCreateBack,
-          AppartementCreateFront,
+          AppartementList,
+          AppartementCreateForm,
           AppartementDetails,
-          ModalWindows
+        //  ModalWindows
   ],
   providers: [
             APPARTMENT_SERVICES_PROVIDERS, // APPARTMENT_SERVICES_PROVIDERS is defined in appartement.services.ts
-            DOCUMENT_SERVICES_PROVIDERS
+        //    DOCUMENT_SERVICES_PROVIDERS
   ],
 })
 export class AppartementModule { }

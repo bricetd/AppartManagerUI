@@ -18,20 +18,12 @@ require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/observable/throw");
 require("rxjs/add/operator/toPromise");
-var appartement_model_1 = require("./appartement.model");
 var logger_service_1 = require("../../utils/logger.service");
 var AppartementService = (function () {
     function AppartementService(http, _logger) {
         this.http = http;
         this._logger = _logger;
         this.baseUrl = "http://localhost:8082/appartmanager/appartement";
-        this._appartements = [
-            new appartement_model_1.Appartement(1, "Cergy", 10, 1, true, false),
-            new appartement_model_1.Appartement(2, "Grigny", 120, 1, false, false),
-            new appartement_model_1.Appartement(3, "Montigny", 100, 0, true, true),
-        ];
-        this._nextID = 0;
-        this._maxAppartements = 10;
     }
     AppartementService.prototype.getAll = function () {
         var _appartements = this.http

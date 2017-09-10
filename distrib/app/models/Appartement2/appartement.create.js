@@ -16,7 +16,7 @@ var AppartementCreateForm = (function () {
         this.created = new core_1.EventEmitter();
     }
     AppartementCreateForm.prototype.createAppartement = function (nomEl, surfaceEl, etageEl, hasParkingEl, hasCaveEl) {
-        var newAppartement = new appartement_model_1.Appartement(1, nomEl.value, +surfaceEl.value, +etageEl.value, hasParkingEl.checked, hasCaveEl.checked);
+        var newAppartement = new appartement_model_1.Appartement(null, nomEl.value, +surfaceEl.value, +etageEl.value, hasParkingEl.checked, hasCaveEl.checked);
         this.created.emit(newAppartement);
     };
     AppartementCreateForm.prototype.resetCreateForm = function () {

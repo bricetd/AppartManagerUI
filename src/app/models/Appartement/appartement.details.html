@@ -25,31 +25,7 @@
   </div>
   <div class="row">
     <div class="details-documents">
-      <div *ngIf="_documents.length == 0">
-        <p class="alert alert-info">There are no documents. Create new one!</p>
-      </div>
-      <div *ngIf="_documents.length > 0" class="table-responsive">
-        <table class="table table-hover">
-          <thead><tr>
-            <th>#</th>
-            <th>Nom</th>
-            <th>Fichier</th>
-            <th>Ajout</th>
-            <th>Modification</th>
-            <th>Tags</th>
-          </tr></thead>
-          <tbody>
-            <tr *ngFor="let doc of _documents; let i = index">
-              <td>{{doc.id}}</td>
-              <td>{{doc.nom}}</td>
-              <td>{{doc.fichier}}</td>
-              <td>{{doc.date_ajout| date:'d MMM HH:mm'}}</td>
-              <td>{{doc.date_modification| date:'d MMM HH:mm'}}</td>
-              <td><span *ngFor="let tag of doc.tags; let i = index" class="label label-primary">{{tag}}</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <document-component [appartementId]="_appartement.id" [actionCode]="_documentActionCode">Loading list of documents ...</document-component>
     </div>
   </div>
 </div>

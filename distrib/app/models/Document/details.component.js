@@ -37,8 +37,8 @@ DetailsComponent = __decorate([
     core_1.Component({
         templateUrl: "app/models/Document/details.component.html",
     }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        document_services_1.DocumentService])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute, typeof (_a = typeof document_services_1.DocumentService !== "undefined" && document_services_1.DocumentService) === "function" && _a || Object])
 ], DetailsComponent);
 exports.DetailsComponent = DetailsComponent;
+var _a;
 //# sourceMappingURL=details.component.js.map

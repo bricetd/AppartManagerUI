@@ -36,7 +36,7 @@ var AppartementCreateBack = (function () {
 }());
 __decorate([
     core_1.ViewChild(appartement_create_front_1.AppartementCreateFront),
-    __metadata("design:type", appartement_create_front_1.AppartementCreateFront)
+    __metadata("design:type", typeof (_a = typeof appartement_create_front_1.AppartementCreateFront !== "undefined" && appartement_create_front_1.AppartementCreateFront) === "function" && _a || Object)
 ], AppartementCreateBack.prototype, "_appartCreateFront", void 0);
 AppartementCreateBack = __decorate([
     core_1.Component({
@@ -47,4 +47,5 @@ AppartementCreateBack = __decorate([
         router_1.ActivatedRoute])
 ], AppartementCreateBack);
 exports.AppartementCreateBack = AppartementCreateBack;
+var _a;
 //# sourceMappingURL=appartement.create-back.js.map

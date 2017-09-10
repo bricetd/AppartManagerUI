@@ -6,8 +6,8 @@ import {ModalWindows} from '../../utils/modalwindows/modalwindows.component'
 
 @Component({
   selector: "document-form",
-  templateUrl: "app/models/Document2/document.create.html",
-//  styleUrls: ["app/models/Document2/document.create.css"]
+  templateUrl: "app/models/Document/document.create.html",
+//  styleUrls: ["app/models/Document/document.create.css"]
 })
 
 export class DocumentCreateForm{

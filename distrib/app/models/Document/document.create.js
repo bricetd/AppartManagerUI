@@ -9,50 +9,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var appartement_model_1 = require("./appartement.model");
+var document_model_1 = require("./document.model");
 var modalwindows_component_1 = require("../../utils/modalwindows/modalwindows.component");
-var AppartementCreateFront = (function () {
-    function AppartementCreateFront() {
+var DocumentCreateForm = (function () {
+    function DocumentCreateForm() {
         this.created = new core_1.EventEmitter();
     }
-    AppartementCreateFront.prototype.createAppartement = function (nomEl, surfaceEl, etageEl, hasParkingEl, hasCaveEl) {
-        var newAppartement = new appartement_model_1.Appartement(1, nomEl.value, +surfaceEl.value, +etageEl.value, hasParkingEl.checked, hasCaveEl.checked);
-        this.created.emit(newAppartement);
+    DocumentCreateForm.prototype.createDocument = function (nomDocumentEl, fichierDocumentEl) {
+        var newDocument = new document_model_1.Document(null, nomDocumentEl.value, fichierDocumentEl.value, null, null);
+        this.created.emit(newDocument);
     };
-    AppartementCreateFront.prototype.resetCreateForm = function () {
+    DocumentCreateForm.prototype.resetCreateForm = function () {
+        this.creationError = "";
         this.createForm.nativeElement.reset();
     };
-    AppartementCreateFront.prototype.closeCreateForm = function () {
+    DocumentCreateForm.prototype.closeCreateForm = function () {
         this.resetCreateForm();
         this.modalwindows.hide();
     };
-    AppartementCreateFront.prototype.ngAfterViewInit = function () {
+    DocumentCreateForm.prototype.showCreateForm = function () {
         this.modalwindows.show();
     };
-    return AppartementCreateFront;
+    return DocumentCreateForm;
 }());
 __decorate([
     core_1.Input('creationError'),
     __metadata("design:type", String)
-], AppartementCreateFront.prototype, "creationError", void 0);
+], DocumentCreateForm.prototype, "creationError", void 0);
 __decorate([
     core_1.ViewChild('form'),
     __metadata("design:type", core_1.ElementRef)
-], AppartementCreateFront.prototype, "createForm", void 0);
+], DocumentCreateForm.prototype, "createForm", void 0);
 __decorate([
     core_1.Output(),
     __metadata("design:type", Object)
-], AppartementCreateFront.prototype, "created", void 0);
+], DocumentCreateForm.prototype, "created", void 0);
 __decorate([
     core_1.ViewChild(modalwindows_component_1.ModalWindows),
     __metadata("design:type", modalwindows_component_1.ModalWindows)
-], AppartementCreateFront.prototype, "modalwindows", void 0);
-AppartementCreateFront = __decorate([
+], DocumentCreateForm.prototype, "modalwindows", void 0);
+DocumentCreateForm = __decorate([
     core_1.Component({
-        selector: "appartement-form",
-        templateUrl: "app/models/Appartement/appartement.create-front.html",
-        styleUrls: ["app/models/Appartement/appartement.create-front.css"]
+        selector: "document-form",
+        templateUrl: "app/models/Document/document.create.html",
     })
-], AppartementCreateFront);
-exports.AppartementCreateFront = AppartementCreateFront;
-//# sourceMappingURL=appartement.create-front.js.map
+], DocumentCreateForm);
+exports.DocumentCreateForm = DocumentCreateForm;
+//# sourceMappingURL=document.create.js.map

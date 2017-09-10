@@ -19,15 +19,6 @@ private baseUrl:string="http://localhost:8082/appartmanager/appartement"
     private http:Http,
     @Optional() private _logger:LoggerService){}
 
-  private _appartements:Array<Appartement> = [
-    new Appartement(1, "Cergy", 10, 1, true, false),
-    new Appartement(2, "Grigny", 120, 1, false, false),
-    new Appartement(3, "Montigny", 100, 0, true, true),
-  ]
-
-  private _nextID:number = 0
-  private _maxAppartements:number = 10
-
   public getAll():Observable<Appartement[]>{
     let _appartements = this.http
     .get(`${this.baseUrl}`, {headers: this._getHeaders()})

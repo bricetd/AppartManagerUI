@@ -32,14 +32,15 @@ var CreateComponent = (function () {
 }());
 __decorate([
     core_1.ViewChild(document_form_component_1.DocumentForm),
-    __metadata("design:type", document_form_component_1.DocumentForm)
+    __metadata("design:type", typeof (_a = typeof document_form_component_1.DocumentForm !== "undefined" && document_form_component_1.DocumentForm) === "function" && _a || Object)
 ], CreateComponent.prototype, "_documentForm", void 0);
 CreateComponent = __decorate([
     core_1.Component({
         templateUrl: "app/models/Document/create.component.html",
         styleUrls: ["app/models/Document/document.component.css"],
     }),
-    __metadata("design:paramtypes", [document_services_1.DocumentService])
+    __metadata("design:paramtypes", [typeof (_b = typeof document_services_1.DocumentService !== "undefined" && document_services_1.DocumentService) === "function" && _b || Object])
 ], CreateComponent);
 exports.CreateComponent = CreateComponent;
+var _a, _b;
 //# sourceMappingURL=create.component.js.map

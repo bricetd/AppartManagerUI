@@ -45,3 +45,10 @@
 .details-documents .label{
   margin: 2px;
 }
+
+a{
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}

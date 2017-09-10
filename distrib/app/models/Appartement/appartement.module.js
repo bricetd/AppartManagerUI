@@ -10,15 +10,13 @@ var platform_browser_1 = require("@angular/platform-browser");
 var common_1 = require("@angular/common");
 var http_1 = require("@angular/http");
 var appartement_component_1 = require("./appartement.component");
-var appartement_list_back_1 = require("./appartement.list-back");
-var appartement_list_front_1 = require("./appartement.list-front");
-var appartement_create_back_1 = require("./appartement.create-back");
-var appartement_create_front_1 = require("./appartement.create-front");
+var appartement_list_1 = require("./appartement.list");
+var appartement_create_1 = require("./appartement.create");
 var appartement_details_1 = require("./appartement.details");
-var modalWindows_1 = require("../../utils/modalWindows");
+var modalwindows_module_1 = require("../../utils/modalwindows/modalwindows.module");
 var appartement_routing_1 = require("./appartement.routing");
 var appartement_service_1 = require("./appartement.service");
-var document_service_1 = require("../Document2/document.service");
+var document_module_1 = require("../Document/document.module");
 var AppartementModule = (function () {
     function AppartementModule() {
     }
@@ -30,20 +28,18 @@ AppartementModule = __decorate([
             appartement_routing_1.AppartementRoutingModule,
             common_1.CommonModule,
             http_1.HttpModule,
+            document_module_1.DocumentModule,
+            modalwindows_module_1.ModalWindowsModule,
             platform_browser_1.BrowserModule
         ],
         declarations: [
             appartement_component_1.AppartementComponent,
-            appartement_list_back_1.AppartementListBack,
-            appartement_list_front_1.AppartementListFront,
-            appartement_create_back_1.AppartementCreateBack,
-            appartement_create_front_1.AppartementCreateFront,
+            appartement_list_1.AppartementList,
+            appartement_create_1.AppartementCreateForm,
             appartement_details_1.AppartementDetails,
-            modalWindows_1.ModalWindows
         ],
         providers: [
             appartement_service_1.APPARTMENT_SERVICES_PROVIDERS,
-            document_service_1.DOCUMENT_SERVICES_PROVIDERS
         ],
     })
 ], AppartementModule);

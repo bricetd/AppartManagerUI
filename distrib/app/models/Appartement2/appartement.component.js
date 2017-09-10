@@ -56,16 +56,16 @@ var AppartementComponent = (function () {
 }());
 __decorate([
     core_1.ViewChild(appartement_create_1.AppartementCreateForm),
-    __metadata("design:type", appartement_create_1.AppartementCreateForm)
+    __metadata("design:type", typeof (_a = typeof appartement_create_1.AppartementCreateForm !== "undefined" && appartement_create_1.AppartementCreateForm) === "function" && _a || Object)
 ], AppartementComponent.prototype, "_appartCreateForm", void 0);
 AppartementComponent = __decorate([
     core_1.Component({
         templateUrl: "app/models/Appartement2/appartement.component.html",
         styleUrls: ["app/models/Appartement2/appartement.component.css"]
     }),
-    __metadata("design:paramtypes", [appartement_service_1.AppartementService,
-        router_1.Router,
+    __metadata("design:paramtypes", [typeof (_b = typeof appartement_service_1.AppartementService !== "undefined" && appartement_service_1.AppartementService) === "function" && _b || Object, router_1.Router,
         router_1.ActivatedRoute])
 ], AppartementComponent);
 exports.AppartementComponent = AppartementComponent;
+var _a, _b;
 //# sourceMappingURL=appartement.component.js.map

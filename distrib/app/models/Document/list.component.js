@@ -34,9 +34,9 @@ ListComponent = __decorate([
         templateUrl: "app/models/Document/list.component.html",
         styleUrls: ["app/models/Document/document.component.css"],
     }),
-    __metadata("design:paramtypes", [document_services_1.DocumentService,
-        router_1.Router,
+    __metadata("design:paramtypes", [typeof (_a = typeof document_services_1.DocumentService !== "undefined" && document_services_1.DocumentService) === "function" && _a || Object, router_1.Router,
         router_1.ActivatedRoute])
 ], ListComponent);
 exports.ListComponent = ListComponent;
+var _a;
 //# sourceMappingURL=list.component.js.map

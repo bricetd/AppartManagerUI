@@ -9,8 +9,8 @@ import {HomeComponent} from './home/home.component'
 
 
 import { AppComponent }  from './app.component';
-import {DocumentModule} from './models/Document2/document.module'
-import {AppartementModule} from './models/Appartement2/appartement.module'
+import {DocumentModule} from './models/Document/document.module'
+import {AppartementModule} from './models/Appartement/appartement.module'
 import {ModalWindowsModule} from './utils/modalwindows/modalwindows.module'
 //import { Document } from './models/Document/document.model';
 //import {DocumentsList} from './models/Document/documents_list.component';

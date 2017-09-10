@@ -11,14 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var appartement_service_1 = require("./appartement.service");
-var document_service_1 = require("../Document2/document.service");
+//import {Document} from '../Document2/document.model'
+//import {DocumentService} from '../Document2/document.service'
 var AppartementDetails = (function () {
-    function AppartementDetails(_route, _appartementService, _documentService) {
+    function AppartementDetails(_route, _appartementService) {
         this._route = _route;
         this._appartementService = _appartementService;
-        this._documentService = _documentService;
         this._error = "";
-        this._documents = [];
+        this._documentActionCode = '0';
+        //  private _documentService:DocumentService){
     }
     AppartementDetails.prototype.ngOnInit = function () {
         var _this = this;
@@ -28,8 +29,9 @@ var AppartementDetails = (function () {
             _this._error = "";
             _this._appartementService.getById(id)
                 .subscribe(function (appartement) { return _this._appartement = appartement; }, function (error) { return _this._error = error; });
-            _this._documentService.getByAppartementId(id)
-                .subscribe(function (documents) { return _this._documents = documents; }, function (error) { return _this._error = error; });
+            //        this._documentService.getByAppartementId(id)
+            //          .subscribe(documents =>  this._documents = documents,
+            //            error => this._error = error)
         });
     };
     AppartementDetails.prototype.ngOnDestroy = function () {
@@ -43,8 +45,7 @@ AppartementDetails = __decorate([
         styleUrls: ["app/models/Appartement/appartement.details.css"],
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        appartement_service_1.AppartementService,
-        document_service_1.DocumentService])
+        appartement_service_1.AppartementService])
 ], AppartementDetails);
 exports.AppartementDetails = AppartementDetails;
 //# sourceMappingURL=appartement.details.js.map

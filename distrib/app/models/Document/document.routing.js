@@ -7,19 +7,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var appartement_component_1 = require("./appartement.component");
-var appartement_details_1 = require("./appartement.details");
-exports.routes = [
-    { path: 'appartement', component: appartement_component_1.AppartementComponent,
-    },
-    { path: 'appartement/:id', component: appartement_details_1.AppartementDetails }
-];
-var AppartementRoutingModule = (function () {
-    function AppartementRoutingModule() {
+//import {AppartementComponent} from './appartement.component'
+//import {AppartementDetails} from './appartement.details'
+exports.routes = [];
+var DocumentRoutingModule = (function () {
+    function DocumentRoutingModule() {
     }
-    return AppartementRoutingModule;
+    return DocumentRoutingModule;
 }());
-AppartementRoutingModule = __decorate([
+DocumentRoutingModule = __decorate([
     core_1.NgModule({
         imports: [
             router_1.RouterModule.forChild(exports.routes)
@@ -28,6 +24,6 @@ AppartementRoutingModule = __decorate([
             router_1.RouterModule
         ]
     })
-], AppartementRoutingModule);
-exports.AppartementRoutingModule = AppartementRoutingModule;
-//# sourceMappingURL=appartement.routing.js.map
+], DocumentRoutingModule);
+exports.DocumentRoutingModule = DocumentRoutingModule;
+//# sourceMappingURL=document.routing.js.map

@@ -44,8 +44,8 @@ AppartementDetails = __decorate([
         templateUrl: "app/models/Appartement2/appartement.details.html",
         styleUrls: ["app/models/Appartement2/appartement.details.css"],
     }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        appartement_service_1.AppartementService])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute, typeof (_a = typeof appartement_service_1.AppartementService !== "undefined" && appartement_service_1.AppartementService) === "function" && _a || Object])
 ], AppartementDetails);
 exports.AppartementDetails = AppartementDetails;
+var _a;
 //# sourceMappingURL=appartement.details.js.map

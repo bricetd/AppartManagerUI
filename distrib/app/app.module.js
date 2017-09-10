@@ -12,8 +12,8 @@ var home_component_1 = require("./home/home.component");
 //import {ModalWindows} from './utils/modalWindows'
 //import {DocumentComponent} from './models/Document/document.component'
 var app_component_1 = require("./app.component");
-var document_module_1 = require("./models/Document2/document.module");
-var appartement_module_1 = require("./models/Appartement2/appartement.module");
+var document_module_1 = require("./models/Document/document.module");
+var appartement_module_1 = require("./models/Appartement/appartement.module");
 var modalwindows_module_1 = require("./utils/modalwindows/modalwindows.module");
 //import { Document } from './models/Document/document.model';
 //import {DocumentsList} from './models/Document/documents_list.component';

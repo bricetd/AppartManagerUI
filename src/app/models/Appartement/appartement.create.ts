@@ -1,16 +1,16 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 import {Appartement} from './appartement.model'
 
-import {ModalWindows} from '../../utils/modalWindows'
+import {ModalWindows} from '../../utils/modalwindows/modalwindows.component'
 
 @Component({
   selector: "appartement-form",
-  templateUrl: "app/models/Appartement/appartement.create-front.html",
-  styleUrls: ["app/models/Appartement/appartement.create-front.css"]
+  templateUrl: "app/models/Appartement/appartement.create.html",
+  styleUrls: ["app/models/Appartement/appartement.create.css"]
 })
 
-export class AppartementCreateFront implements AfterViewInit{
+export class AppartementCreateForm{
 
   @Input('creationError') creationError:string;
 
@@ -22,7 +22,7 @@ export class AppartementCreateFront implements AfterViewInit{
 
   private createAppartement(nomEl:any, surfaceEl:any, etageEl:any,
                             hasParkingEl:any, hasCaveEl:any){
-    var newAppartement:Appartement = new Appartement(1, nomEl.value, +surfaceEl.value, +etageEl.value, hasParkingEl.checked, hasCaveEl.checked)
+    var newAppartement:Appartement = new Appartement(null, nomEl.value, +surfaceEl.value, +etageEl.value, hasParkingEl.checked, hasCaveEl.checked)
     this.created.emit(newAppartement);
   }
 
@@ -35,7 +35,7 @@ export class AppartementCreateFront implements AfterViewInit{
     this.modalwindows.hide();
   }
 
-  public ngAfterViewInit(){
+  public showCreateForm(){
     this.modalwindows.show()
   }
 }

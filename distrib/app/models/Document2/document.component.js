@@ -20,12 +20,15 @@ var DocumentComponent = (function () {
         //Listing
         this._documents = [];
         this._creationError = "";
-        this._doRefresh();
     }
+    DocumentComponent.prototype.ngOnInit = function () {
+        console.log("Action code:" + this._actionCode);
+        this._doRefresh();
+    };
     DocumentComponent.prototype._createDocument = function (newDocument) {
         var _this = this;
         switch (this._actionCode) {
-            case ('0'):
+            case '0': {
                 this._documentService.addDocumentByAppartementId(newDocument, this._appartementId)
                     .then(function (document) {
                     console.log(document);
@@ -37,7 +40,11 @@ var DocumentComponent = (function () {
                     _this._creationError = error;
                 });
                 break;
-            default: console.error("Unknown action");
+            }
+            default: {
+                console.error("Unknown action");
+                break;
+            }
         }
     };
     DocumentComponent.prototype._removeDocument = function (index) {
@@ -56,9 +63,11 @@ var DocumentComponent = (function () {
             case '0': {
                 this._documentService.getByAppartementId(this._appartementId)
                     .subscribe(function (documents) { return _this._documents = documents; });
+                break;
             }
             default: {
                 console.error("Unknown action");
+                break;
             }
         }
         //  this._documentService.getAll()
@@ -79,7 +88,7 @@ __decorate([
 ], DocumentComponent.prototype, "_actionCode", void 0);
 __decorate([
     core_1.ViewChild(document_create_1.DocumentCreateForm),
-    __metadata("design:type", document_create_1.DocumentCreateForm)
+    __metadata("design:type", typeof (_a = typeof document_create_1.DocumentCreateForm !== "undefined" && document_create_1.DocumentCreateForm) === "function" && _a || Object)
 ], DocumentComponent.prototype, "_appartCreateForm", void 0);
 DocumentComponent = __decorate([
     core_1.Component({
@@ -87,9 +96,9 @@ DocumentComponent = __decorate([
         templateUrl: "app/models/Document2/document.component.html",
         styleUrls: ["app/models/Document2/document.component.css"]
     }),
-    __metadata("design:paramtypes", [document_service_1.DocumentService,
-        router_1.Router,
+    __metadata("design:paramtypes", [typeof (_b = typeof document_service_1.DocumentService !== "undefined" && document_service_1.DocumentService) === "function" && _b || Object, router_1.Router,
         router_1.ActivatedRoute])
 ], DocumentComponent);
 exports.DocumentComponent = DocumentComponent;
+var _a, _b;
 //# sourceMappingURL=document.component.js.map

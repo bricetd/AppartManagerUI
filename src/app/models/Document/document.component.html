@@ -1,6 +1,10 @@
-  <h2>Your documents</h2>
-  <p>
-    <a routerLink="list">All accounts</a>
-    <a routerLink="create">Create new account</a>
-  </p>
-<router-outlet></router-outlet>
+<p>
+  <a (click)="_doRefresh()">Liste de documents</a> |
+  <a (click)="_showCreateForm()">Ajouter un document</a>
+</p>
+<document-form (created)="_createDocument($event)" [creationError]="_creationError"></document-form>
+<document-list [documents]="_documents" (delete)="_removedocument($event)" (details)="_showdocumentDetails($event)"></document-list>
+<p>
+  <a (click)="_doRefresh()">Liste de documents</a> |
+  <a (click)="_showCreateForm()">Ajouter un document</a>
+</p>
